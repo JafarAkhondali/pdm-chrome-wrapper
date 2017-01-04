@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 
-# uget-chrome-wrapper is a tool to integrate uGet Download manager
+# Perspolis-chrome-wrapper (forked from uget-chrome-wrapper) is a tool to integrate uGet Download manager
 # with Google Chrome in Linux systems.
 
 # Copyright (C) 2016  Gobinath
@@ -29,7 +29,8 @@ from os.path import splitext, basename, join, expanduser
 import urllib2
 from mimetypes import guess_extension
 
-UGET_COMMAND = "uget-gtk"
+#UGET_COMMAND = "uget-gtk2"
+UGET_COMMAND = "persepolis"
 VERSION = "1.3.4"
 
 # Platform specific configuration
@@ -51,7 +52,7 @@ def extract_file_name(url):
 				title = smt.replace('title=', '').replace('+', ' ')
 			elif smt.startswith('mime='):
 				mime = smt.replace('mime=', '')
-		
+
 		if title:
 			fileName = title
 			if mime:
@@ -64,6 +65,8 @@ def extract_file_name(url):
 # Send a message to the webapp.
 def send_message(message):
 	# Write message size.
+	#call([UGET_COMMAND,"--link http://www.google.com"])
+	#call(["persepolis", "--link=" + "http://www.google.com/"])
 	sys.stdout.write(struct.pack('I', len(message)))
 	# Write the message itself.
 	sys.stdout.write(message)
@@ -85,22 +88,23 @@ def read_message():
 			if not 'url' in text:
 				send_message('{"enable": true, "version": "' + VERSION + '"}')
 				return
-			
+
 			send_message('{"state": "accepted"}')
 			data = json.loads(text)
 			url = data['url']
-			
-			if url: 
+
+			if url:
 				filename = data['filename']
 				cookie = data['cookies']
 				referer = data['referrer']
 				if not filename:
 					filename = extract_file_name(url)
+					call([UGET_COMMAND, url])
 				if referer:
-					call([UGET_COMMAND, "--http-referer=" + referer, "--filename=" + filename, url])
+					call([UGET_COMMAND, "--referer=" + referer, "--name=" + filename,"--link="+ url])
 				else:
-					call([UGET_COMMAND, "--filename=" + filename, url])
-			
+					call([UGET_COMMAND, "--name=" + filename,"--link="+ url])
+
 			sys.exit(0)
 
 

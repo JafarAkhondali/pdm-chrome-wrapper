@@ -1,5 +1,5 @@
 /*
-* uget-chrome-wrapper is an extension to integrate uGet Download manager
+* pdm-chrome-wrapper (forked from uget-chrome-wrapper ) is an extension to integrate uGet Download manager
 * with Google Chrome, Chromium and Vivaldi in Linux and Windows.
 *
 * Copyright (C) 2016  Gobinath
@@ -22,7 +22,7 @@ var interruptDownloads = true;
 var ugetWrapperNotFound = true;
 var interruptDownload = false;
 var disposition = '';
-var hostName = 'com.javahelps.ugetchromewrapper';
+var hostName = 'com.persepolis.pdmchromewrapper';
 var chromeVersion;
 var filter = [];
 var keywords = [];
@@ -48,21 +48,21 @@ try {
 chromeVersion = parseInt(chromeVersion);
 sendMessageToHost({ version: "1.1.6" });
 
-if (localStorage["uget-keywords"]) {
-    keywords = localStorage["uget-keywords"].split(/[\s,]+/);
+if (localStorage["pdm-keywords"]) {
+    keywords = localStorage["pdm-keywords"].split(/[\s,]+/);
 } else {
-	localStorage["uget-keywords"] = '';
+	localStorage["pdm-keywords"] = '';
 }
 
 
-if (!localStorage["uget-interrupt"]) {
-    localStorage["uget-interrupt"] = 'true';
+if (!localStorage["pdm-interrupt"]) {
+    localStorage["pdm-interrupt"] = 'true';
 } else {
-    var interrupt = (localStorage["uget-interrupt"] == "true");
+    var interrupt = (localStorage["pdm-interrupt"] == "true");
     setInterruptDownload(interrupt);
 }
-console.log(localStorage["uget-interrupt"]);
-// Message format to send the download information to the uget-chrome-wrapper
+//console.log(localStorage["pdm-interrupt"]);
+// Message format to send the download information to the pdm-chrome-wrapper
 var message = {
     url: '',
     cookies: '',
@@ -88,7 +88,7 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
     }
 });
 
-// Send message to the uget-chrome-wrapper
+// Send message to the pdm-chrome-wrapper
 function sendMessageToHost(message) {
     chrome.runtime.sendNativeMessage(hostName, message, function(response) {
         ugetWrapperNotFound = (response == null);
@@ -114,14 +114,14 @@ function postParams(source) {
 
 // Add to Chrome context menu
 chrome.contextMenus.create({
-    title: 'Download with uGet',
-    id: "download_with_uget",
+    title: 'Download with pdm',
+    id: "download_with_pdm",
     contexts: ['link']
 });
 
 chrome.contextMenus.onClicked.addListener(function(info, tab) {
     "use strict";
-    if (info.menuItemId === "download_with_uget") {
+    if (info.menuItemId === "download_with_pdm") {
         clearMessage();
         message.url = info['linkUrl'];
         message.referrer = info['pageUrl'];
@@ -133,7 +133,7 @@ chrome.contextMenus.onClicked.addListener(function(info, tab) {
 // Interrupt Google Chrome download
 chrome.downloads.onCreated.addListener(function(downloadItem) {
 
-    if (ugetWrapperNotFound || !interruptDownloads) { // uget-chrome-wrapper not installed
+    if (ugetWrapperNotFound || !interruptDownloads) { // pdm-chrome-wrapper not installed
         return;
     }
 
@@ -221,7 +221,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(function(details) {
 ]);
 chrome.webRequest.onHeadersReceived.addListener(function(details) {
 
-    if (ugetWrapperNotFound) { // uget-chrome-wrapper not installed
+    if (ugetWrapperNotFound) { // pdm-chrome-wrapper not installed
         return {
             responseHeaders: details.responseHeaders
         };
@@ -365,6 +365,6 @@ function setInterruptDownload(interrupt, writeToStorage) {
         chrome.browserAction.setIcon({ path: "./icon_disabled_32.png" });
     }
     if(writeToStorage) {
-        localStorage["uget-interrupt"] = interrupt.toString();
+        localStorage["pdm-interrupt"] = interrupt.toString();
     }
 }

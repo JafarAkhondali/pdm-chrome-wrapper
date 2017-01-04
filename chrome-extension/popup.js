@@ -1,5 +1,5 @@
 /*
-* uget-chrome-wrapper is an extension to integrate uGet Download manager
+* pdm-chrome-wrapper (forked from uget-chrome-wrapper ) is an extension to integrate PDM Download manager
 * with Google Chrome, Chromium and Vivaldi in Linux and Windows.
 *
 * Copyright (C) 2016  Gobinath
@@ -22,7 +22,7 @@ function addBookmark() {
     var keywords = document.getElementById("keywords").value;
     var interrupt = document.getElementById('chk-interrupt').checked;
 
-    localStorage["uget-keywords"] = keywords;
+    localStorage["pdm-keywords"] = keywords;
 
     chrome.runtime.getBackgroundPage(function(backgroundPage) {
         backgroundPage.updateKeywords(keywords);
@@ -34,10 +34,8 @@ function addBookmark() {
 
 // When the popup HTML has loaded
 window.addEventListener('load', function(evt) {
-	// alert(localStorage["uget-interrupt"]);
-	// alert(typeof localStorage["uget-interrupt"]);
-	var interrupt = (localStorage["uget-interrupt"] == "true");
+	var interrupt = (localStorage["pdm-interrupt"] == "true");
     document.getElementById('save').addEventListener('click', addBookmark);
-    document.getElementById('keywords').value = localStorage["uget-keywords"];
+    document.getElementById('keywords').value = localStorage["pdm-keywords"];
     document.getElementById('chk-interrupt').checked = interrupt;
 });
