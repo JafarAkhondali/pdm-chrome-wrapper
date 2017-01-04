@@ -17,11 +17,13 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 {
-    "name": "com.javahelps.ugetchromewrapper",
-    "description": "Integrate uGet with Google Chrome",
-    "path": "/usr/bin/uget-chrome-wrapper",
+    "name": "com.persepolis.pdmchromewrapper",
+    "description": "Integrate Persepolis with Google Chrome",
+    "path": "/usr/bin/pdm-chrome-wrapper",
     "type": "stdio",
     "allowed_origins": [
-        "chrome-extension://efjgjleilhflffpbnkaofpmdnajdpepi/"
+        "chrome-extension://ojjboaigahdoanbmchmemocadeodcfhc/",
+        "chrome-extension://efjgjleilhflffpbnkaofpmdnajdpepi/",
+        "chrome-extension://cdanbnfaljjfpkhioidppkejngkchgod/"
     ]
 }

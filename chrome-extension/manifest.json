@@ -21,8 +21,8 @@
             "run_at": "document_start"
         }
     ],
-    "description": "uGet Browser Integration extension replaces default download manager of Google Chrome by uGet Download Manager.",
-    "homepage_url": "https://slgobinath.github.io/uget-chrome-wrapper",
+    "description": "Pdm Browser Integration extension replaces default download manager of Google Chrome by PDM Download Manager.",
+    "homepage_url": "https://github.com/JafarAkhondali/uget-chrome-wrapper",
     "icons": {
         "32": "icon_32.png",
         "48": "icon_48.png",
@@ -30,8 +30,8 @@
     },
     "manifest_version": 2,
     "minimum_chrome_version": "19.0",
-    "name": "uGet Integration",
-    "short_name": "uGet",
+    "name": "Pdm Integration",
+    "short_name": "Pdm",
     "offline_enabled": true,
     "permissions": [
         "<all_urls>",
