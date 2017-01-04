@@ -1,9 +1,11 @@
 Forked from (uget-chrome-wrapper)[https://github.com/slgobinath/uget-chrome-wrapper]
 
+-----
+
 # PDM Chrome Wrapper
 Integrate Persepolis Download Manager with Google Chrome in Linux systems. With this tool, PDM can interrupt and catch your downloads from Google Chrome.
 
-For more details, visit the official page: [uGet Chrome Wrapper](https://slgobinath.github.io/uget-chrome-wrapper/)
+For more details, visit the official page: [PDM Chrome Wrapper](https://github.com/persepolisdm/persepolis)
 
 ## Installation
 
