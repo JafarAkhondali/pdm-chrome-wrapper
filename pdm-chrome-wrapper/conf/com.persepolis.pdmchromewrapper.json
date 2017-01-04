@@ -22,8 +22,6 @@
     "path": "/usr/bin/pdm-chrome-wrapper",
     "type": "stdio",
     "allowed_origins": [
-        "chrome-extension://ojjboaigahdoanbmchmemocadeodcfhc/",
-        "chrome-extension://efjgjleilhflffpbnkaofpmdnajdpepi/",
-        "chrome-extension://cdanbnfaljjfpkhioidppkejngkchgod/"
+        "chrome-extension://legimlagjjoghkoedakdjhocbeomojao/",
     ]
 }
