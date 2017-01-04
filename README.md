@@ -1,4 +1,4 @@
-Forked from (uget-chrome-wrapper)[https://github.com/slgobinath/uget-chrome-wrapper]
+Forked from [uget-chrome-wrapper](https://github.com/slgobinath/uget-chrome-wrapper)
 
 -----
 
