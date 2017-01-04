@@ -1,4 +1,4 @@
-// uget-chrome-wrapper is a tool to integrate uGet Download manager
+// pdm-chrome-wrapper ( forked from uget-chrome-wrapper ) is a tool to integrate uGet Download manager
 // with Google Chrome in Linux systems.
 
 // Copyright (C) 2016  Gobinath
